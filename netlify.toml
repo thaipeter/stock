@@ -1,0 +1,23 @@
+# netlify.toml — Deployment configuration for Netlify
+# คลังอะไหล่เมาท์เทน | C-FACTORY WMS
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Allow fetch() to load local HTML component files (CORS for same-origin)
+[[headers]]
+  for = "/components/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/pages/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
